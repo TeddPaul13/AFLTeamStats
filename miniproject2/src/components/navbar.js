@@ -12,7 +12,7 @@ function OffcanvasExample() {
   return (
     <>
       {['xxl'].map((expand) => ( // full navbar for xxl screen brakpoint
-        <Navbar key={expand} expand={expand} className="bg-body-tertiary mb-3">
+        <Navbar key={expand} expand={expand} className="bg-danger mb-3">
           <Container fluid>
             <Navbar.Brand href="#">AFL TEAM STATS</Navbar.Brand>
             <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
