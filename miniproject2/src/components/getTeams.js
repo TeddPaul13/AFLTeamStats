@@ -3,19 +3,23 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Card, Row, Col, Container } from "react-bootstrap";
 
 
-const [teamData, setTeamData] = useState(null);
+
 
 
 
 export default function GetTeams() {
+    const [teamData, setTeamData] = useState([]);
 
     useEffect(() => {
         const fetchData = async () => {
             const response = await fetch('https://api.squiggle.com.au/?q=teams')
             const teamDataList = await response.json()
+            console.log(teamData)
+            console.log(teamDataList)
             setTeamData(teamDataList)
                   }
             fetchData()
+            
     }, [])
   return (
     <Container>
@@ -27,7 +31,7 @@ export default function GetTeams() {
 
                     <Card.Body>
                         <Card.Title>{teamData.name}</Card.Title>
-                        <Card.Text>{teamData.team_name}</Card.Text>
+                        {/* <Card.Text>{teamData.team_name}</Card.Text> */}
                     </Card.Body>
                 </Card>
             </Col>
