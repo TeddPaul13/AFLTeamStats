@@ -25,7 +25,7 @@ export default function DisplayTeams(){
                 {teamData.map((teamData, k) => (
                     <Col key={k} xs={12} md={4} lg={3}>
                         <Card >
-                            <Card.Img src={teamData.logo}/>
+                            <Card.Img src={"https://squiggle.com.au/" +teamData.logo} alt= "Team Logo"/>
 
                             <Card.Body>
                                 <Card.Title>{teamData.name}</Card.Title>
