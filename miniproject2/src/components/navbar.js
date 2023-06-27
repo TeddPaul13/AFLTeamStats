@@ -8,7 +8,7 @@ import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import { DropdownSubmenu, NavDropdownMenu } from "react-bootstrap-submenu";
-
+import SearchForm from "./SearchForm";
 function OffcanvasExample() {
   return (
     <>
@@ -62,7 +62,8 @@ function OffcanvasExample() {
                      
                     </NavDropdownMenu>
                   </Nav>
-                  <Form className="d-flex">
+                  <SearchForm/>
+                  {/* <Form className="d-flex">
                     <Form.Control
                       type="search"
                       placeholder="Search"
@@ -70,7 +71,7 @@ function OffcanvasExample() {
                       aria-label="Search"
                     />
                     <Button variant="outline-success">Search</Button>
-                  </Form>
+                  </Form> */}
                 </Offcanvas.Body>
               </Navbar.Offcanvas>
             </Container>

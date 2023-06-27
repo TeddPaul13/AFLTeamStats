@@ -5,6 +5,8 @@ import DisplayTeams from './components/DisplayTeams';
 
 import OffcanvasExample from './components/navbar';
 import Post from './components/postRandomData';
+import SearchForm from './components/SearchForm';
+import HandleSearchForTeam from './components/HandleSearchForTeam';
 
 function App() {
  return (
@@ -15,7 +17,9 @@ function App() {
 
   {/* <TeamDetails/> */}
 
-  <DisplayTeams/>
+  {/* <DisplayTeams/> */}
+  <HandleSearchForTeam/>
+ 
   </>
  )
 }
