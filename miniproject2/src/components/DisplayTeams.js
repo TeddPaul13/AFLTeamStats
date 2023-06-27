@@ -20,6 +20,9 @@ export default function DisplayTeams(){
 
     return(
         <>
+        <div className = "header">
+            <h1>AUSTRALIAN FOOTBALL LEAGUE TEAMS</h1> 
+        </div>
          <Container>
             <Row>
                 {teamData.map((teamData, k) => (

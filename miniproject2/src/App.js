@@ -13,7 +13,7 @@ function App() {
 
   {/* <Post/> component for showing dog image */}
 
-  <TeamDetails/>
+  {/* <TeamDetails/> */}
 
   <DisplayTeams/>
   </>
