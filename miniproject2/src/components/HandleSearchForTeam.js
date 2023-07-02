@@ -10,7 +10,8 @@ export default function HandleSearchForTeam() {
         const teams = response.data.teams;
 
         const searchResults = teams.filter((team) => {
-          return team && team.name && team.name.toLowerCase().includes(value) // check if the team exist in the array and if the value entered in the search field.
+          return value && team && team.name && team.name.toLowerCase().includes(value) // check if there is a value and check if the team exist 
+          //in the array and if the value entered in the search field.
         })
         console.log(searchResults)
       });
