@@ -3,8 +3,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
 export default function SearchForm() {
-  //const [q, setQ] = useState("");
-  // const [searchParam] = useState(["name"]);
+ 
   return (
     <>
       <Form className="d-flex">
@@ -16,9 +15,6 @@ export default function SearchForm() {
         />
         <Button variant="outline-success">Search</Button>
       </Form>
-      {/* //value={q}
-        //onChange={(e) => setQ(e.target.value)}
-      /> */}
     </>
   );
 }

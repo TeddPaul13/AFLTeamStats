@@ -1,33 +1,37 @@
-import React, { useState } from 'react'
-import axios from "axios";
+import React, { useState } from "react";
 
-export default function HandleSearchForTeam() {
-  const [input, setInput] = useState("")
+export default function HandleSearchForTeam(props) {
+  const [input, setInput] = useState("");
+  const setSearchResults = props.setSearchResults;
+  const teamData = props.teamData;
 
-  
-    const fetchTeamDetails = (value) => {
-      axios.get("https://api.squiggle.com.au/?q=teams").then((response) => {
-        const teams = response.data.teams;
+  const fetchTeamDetails = (value) => {
 
-        const searchResults = teams.filter((team) => {
-          return value && team && team.name && team.name.toLowerCase().includes(value) // check if there is a value and check if the team exist 
-          //in the array and if the value entered in the search field.
-        })
-        console.log(searchResults)
+    if (value){
+      const searchResults = teamData.filter((team) => {
+        return (
+          team.name && team.name.toLowerCase().includes(value)
+        ); // check if there is a value and check if the team exist
+        //in the array and if its value entered in the search field.
       });
-  }
+      setSearchResults(searchResults);
+    } else{
+      setSearchResults(teamData);
+    }
+   
+  };
 
-  const handleChange = (value) =>{
-    setInput(value)
-    fetchTeamDetails(value)
-  }
-    return (
+  const handleChange = (value) => {
+    setInput(value);
+    fetchTeamDetails(value);
+  };
+  return (
     <div>
       <input
-      placeholder = "Search Teams"
-      value = {input}
-      onChange={(e) => handleChange(e.target.value)} // when the user types take the value of the event (e) and store in the inpute variable
+        placeholder="Search Teams"
+        value={input}
+        onChange={(e) => handleChange(e.target.value)} // when the user types take the value of the event (e) and store in the inpute variable
       />
     </div>
-  )
+  );
 }

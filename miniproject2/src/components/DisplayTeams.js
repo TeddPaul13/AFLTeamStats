@@ -3,19 +3,9 @@ import axios from "axios";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Card, Row, Col, Container } from "react-bootstrap";
 
-export default function DisplayTeams(){
+export default function DisplayTeams(props){
 
-    const [teamData, setTeamData] = useState([]);
-
-    useEffect(() => {
-        const fetchTeams = () => {
-              axios.get("https://api.squiggle.com.au/?q=teams").then((response) => {
-                const teams = response.data.teams;
-                setTeamData(teams);
-              });
-             };
-            fetchTeams()
-         }, []);
+    //const [teamData, setTeamData] = useState([]);
 
 
     return(
@@ -25,7 +15,7 @@ export default function DisplayTeams(){
         </div>
          <Container>
             <Row>
-                {teamData.map((teamData, k) => (
+                {props.teamData.map((teamData, k) => (
                     <Col key={k} xs={12} md={4} lg={3}>
                         <Card >
                             <Card.Img src={"https://squiggle.com.au/" +teamData.logo} alt= "Team Logo"/>
