@@ -14,11 +14,11 @@ export default function DisplayTeams(props){
             <h1>AUSTRALIAN FOOTBALL LEAGUE TEAMS</h1> 
         </div>
          <Container>
-            <Row>
+            <Row >
                 {props.teamData.map((teamData, k) => (
-                    <Col key={k} xs={12} md={4} lg={3}>
-                        <Card >
-                            <Card.Img src={"https://squiggle.com.au/" +teamData.logo} alt= "Team Logo"/>
+                    <Col className="teamcols" key={k} xs={12} md={4} lg={3}>
+                        <Card className="allteams">
+                            <Card.Img className= "teamlogo" src={"https://squiggle.com.au/" +teamData.logo} alt= "Team Logo"/>
 
                             <Card.Body>
                                 <Card.Title>{teamData.name}</Card.Title>
