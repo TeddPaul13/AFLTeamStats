@@ -1,12 +1,14 @@
-import React, {useState, useEffect}from "react";
+import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 
-import "./components/display.css"
+import "./components/display.css";
 
 import DisplayTeams from "./components/DisplayTeams";
 
-import OffcanvasExample from "./components/navbar";
+import ShowTeamStandings from "./components/ShowTeamStandings";
+
+import OffcanvasNavbar from "./components/navbar";
 
 import SearchForm from "./components/SearchForm";
 import HandleSearchForTeam from "./components/HandleSearchForTeam";
@@ -24,10 +26,16 @@ function App() {
   }, []);
   return (
     <>
-      <OffcanvasExample />
+      <OffcanvasNavbar>
+        <HandleSearchForTeam
+          teamData={teamData}
+          setSearchResults={setSearchResults}
+        />
+      </OffcanvasNavbar>
 
-      <DisplayTeams teamData={searchResults}/>
-      <HandleSearchForTeam teamData={teamData} setSearchResults={setSearchResults}/>
+      <DisplayTeams teamData={searchResults} />
+
+      <ShowTeamStandings />
     </>
   );
 }

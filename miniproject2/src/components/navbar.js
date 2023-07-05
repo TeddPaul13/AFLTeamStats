@@ -1,4 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
+
+import HandleSearchForTeam from "./HandleSearchForTeam";
+import DisplayTeams from "./DisplayTeams";
+import ShowTeamStandings from "./ShowTeamStandings";
 
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
@@ -9,7 +13,13 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import { DropdownSubmenu, NavDropdownMenu } from "react-bootstrap-submenu";
 import SearchForm from "./SearchForm";
-function OffcanvasExample() {
+function OffcanvasNavbar(props) {
+  const [selectedYear, setSelectedYear] = useState(null);
+
+  const handleYearSelect = (year) => {
+    setSelectedYear(year)
+  };
+
   return (
     <>
       {["xxl"].map(
@@ -34,8 +44,10 @@ function OffcanvasExample() {
                 </Offcanvas.Header>
                 <Offcanvas.Body>
                   <Nav className="justify-content-end flex-grow-1 pe-3">
-                    <Nav.Link href="#action1">Home</Nav.Link>
+                    <Nav.Link href="/">Home</Nav.Link>
                     <Nav.Link href="#action2">Link</Nav.Link>
+
+
                     <NavDropdownMenu
                       title="View Teams Standings"
                       id={`offcanvasNavbarDropdown-expand-${expand}`}
@@ -45,8 +57,10 @@ function OffcanvasExample() {
                         Something else here
                       </NavDropdown.Item>
                       <NavDropdown.Divider />
+
+
                       <DropdownSubmenu href="#" title="Select Year">
-                        <NavDropdown.Item href="#action3">
+                        <NavDropdown.Item onClick={() => handleYearSelect(2020)}>
                           2020
                         </NavDropdown.Item>
                         <NavDropdown.Item href="#action4">
@@ -62,24 +76,16 @@ function OffcanvasExample() {
                      
                     </NavDropdownMenu>
                   </Nav>
-                  <SearchForm/>
-                  {/* <Form className="d-flex">
-                    <Form.Control
-                      type="search"
-                      placeholder="Search"
-                      className="me-2"
-                      aria-label="Search"
-                    />
-                    <Button variant="outline-success">Search</Button>
-                  </Form> */}
+                  {selectedYear && <ShowTeamStandings year={selectedYear} />}
+                  {props.children}
                 </Offcanvas.Body>
               </Navbar.Offcanvas>
             </Container>
           </Navbar>
         )
       )}
-    </>
+      </>
   );
 }
 
-export default OffcanvasExample;
+export default OffcanvasNavbar;

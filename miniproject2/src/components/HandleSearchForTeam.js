@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Form from "react-bootstrap/Form";
 
 export default function HandleSearchForTeam(props) {
   const [input, setInput] = useState("");
@@ -11,11 +12,11 @@ export default function HandleSearchForTeam(props) {
       const searchResults = teamData.filter((team) => {
         return (
           team.name && team.name.toLowerCase().includes(value)
-        ); // check if there is a value and check if the team exist
-        //in the array and if its value entered in the search field.
+        ); 
       });
       setSearchResults(searchResults);
-    } else{
+
+    }else{
       setSearchResults(teamData);
     }
    
@@ -27,11 +28,16 @@ export default function HandleSearchForTeam(props) {
   };
   return (
     <div>
-      <input
-        placeholder="Search Teams"
-        value={input}
-        onChange={(e) => handleChange(e.target.value)} // when the user types take the value of the event (e) and store in the inpute variable
-      />
+      <Form className="d-flex">
+        <Form.Control
+          type="search"
+          placeholder="Search Teams"
+          className="me-2"
+          aria-label="Search"
+          value= {input}
+          onChange={(e) => handleChange(e.target.value)}
+        />
+      </Form>
     </div>
   );
 }
