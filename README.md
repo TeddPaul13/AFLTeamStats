@@ -31,7 +31,7 @@
 - Axios
 10. ### How might you extend the features of your application in future?
 - The user should be able to click on the Team logo and view more details.
-- The search field to offer suggestions when user types a letter.
+- Size the cards to be same size.
 - The latest video highlights should be fetched from Youtube API and uploaded on the page.
 - Add sporty colors to the design.
 - Add standings for more years.

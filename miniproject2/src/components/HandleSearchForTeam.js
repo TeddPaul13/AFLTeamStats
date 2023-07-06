@@ -7,19 +7,14 @@ export default function HandleSearchForTeam(props) {
   const teamData = props.teamData;
 
   const fetchTeamDetails = (value) => {
-
-    if (value){
+    if (value) {
       const searchResults = teamData.filter((team) => {
-        return (
-          team.name && team.name.toLowerCase().includes(value)
-        ); 
+        return team.name && team.name.toLowerCase().includes(value);
       });
       setSearchResults(searchResults);
-
-    }else{
+    } else {
       setSearchResults(teamData);
     }
-   
   };
 
   const handleChange = (value) => {
@@ -34,7 +29,7 @@ export default function HandleSearchForTeam(props) {
           placeholder="Search Teams"
           className="me-2"
           aria-label="Search"
-          value= {input}
+          value={input}
           onChange={(e) => handleChange(e.target.value)}
         />
       </Form>
