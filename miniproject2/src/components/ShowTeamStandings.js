@@ -8,12 +8,17 @@ export default function ShowTeamStandings() {
   const [teamStandings, setTeamStandings] = useState([]);
 
   useEffect(() => {
-    axios.get("https://api.squiggle.com.au/?q=standings").then((response) => {
-      const standingList = response.data.standings;
-      setTeamStandings(standingList);
-      console.log(response);
-      console.log(standingList);
-    });
+    // axios.get("https://api.squiggle.com.au/?q=standings").then((response) => {
+    //   const standingList = response.data.standings;
+    //   setTeamStandings(standingList);
+    //   console.log(response);
+    //   console.log(standingList);
+    // });
+    axios
+      .get("http://localhost:8080/api/users/")
+      .then((response) => {
+        console.log(response);
+      });
   }, []);
 
   return (
