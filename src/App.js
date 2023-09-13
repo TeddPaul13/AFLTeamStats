@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 
@@ -16,7 +16,9 @@ import HandleSearchForTeam from "./components/HandleSearchForTeam";
 function App() {
   const [teamData, setTeamData] = useState([]);
   const [searchResults, setSearchResults] = useState([]);
+  const [selectedYear, setSelectedYear] = useState(null);
 
+  // useEffect for fetching data
   useEffect(() => {
     axios.get("https://api.squiggle.com.au/?q=teams").then((response) => {
       const teams = response.data.teams;
@@ -24,9 +26,16 @@ function App() {
       setSearchResults(teams);
     });
   }, []);
+
+  //Callback function to update selectedYear
+  const handleYearSelect = (year) => {
+    setSelectedYear(year);
+
+  };
+
   return (
     <>
-      <OffcanvasNavbar>
+      <OffcanvasNavbar onYearSelect={handleYearSelect}>
         <HandleSearchForTeam
           teamData={teamData}
           setSearchResults={setSearchResults}
@@ -35,7 +44,10 @@ function App() {
 
       <DisplayTeams teamData={searchResults} />
 
-      <ShowTeamStandings />
+      {/* Render the show Team Standings table when the year is selected from the dropdown menu. */}
+      <div className="standingsTable">
+        {selectedYear && <ShowTeamStandings year={selectedYear} />}
+      </div>
     </>
   );
 }

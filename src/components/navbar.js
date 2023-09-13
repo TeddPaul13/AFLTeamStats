@@ -18,6 +18,8 @@ function OffcanvasNavbar(props) {
 
   const handleYearSelect = (year) => {
     setSelectedYear(year)
+    // Pass the selectedYear to the callback function in App.js
+    props.onYearSelect(year);
   };
 
   return (
@@ -74,9 +76,9 @@ function OffcanvasNavbar(props) {
                         </NavDropdown.Item>
                       </DropdownSubmenu>
                      
-                    </NavDropdownMenu>
+                    </NavDropdownMenu> 
                   </Nav>
-                  {selectedYear && <ShowTeamStandings year={selectedYear} />}
+                  {/* {selectedYear && <ShowTeamStandings year={selectedYear} />} */}
                   {props.children}
                 </Offcanvas.Body>
               </Navbar.Offcanvas>
