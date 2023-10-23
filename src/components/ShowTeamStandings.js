@@ -14,6 +14,7 @@ export default function ShowTeamStandings() {
       console.log(response);
       console.log(standingList);
     });
+    // Example of fetching from the backend instead of having the api on the frontend
     // axios
     //   .get("http://localhost:8080/api/users/")
     //   .then((response) => {

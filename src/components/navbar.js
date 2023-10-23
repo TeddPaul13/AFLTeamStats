@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import HandleSearchForTeam from "./HandleSearchForTeam";
 import DisplayTeams from "./DisplayTeams";
@@ -15,11 +16,14 @@ import { DropdownSubmenu, NavDropdownMenu } from "react-bootstrap-submenu";
 import SearchForm from "./SearchForm";
 function OffcanvasNavbar(props) {
   const [selectedYear, setSelectedYear] = useState(null);
+  const navigate = useNavigate();
 
   const handleYearSelect = (year) => {
     setSelectedYear(year)
-    // Pass the selectedYear to the callback function in App.js
+   // Pass the selectedYear to the callback function in App.js
     props.onYearSelect(year);
+    navigate("/standings")
+    
   };
 
   return (
@@ -49,18 +53,10 @@ function OffcanvasNavbar(props) {
                     <Nav.Link href="/">Home</Nav.Link>
                     <Nav.Link href="#action2">Link</Nav.Link>
 
-
                     <NavDropdownMenu
                       title="View Teams Standings"
                       id={`offcanvasNavbarDropdown-expand-${expand}`}
                     >
-                       
-                      <NavDropdown.Item href="#action5">
-                        Something else here
-                      </NavDropdown.Item>
-                      <NavDropdown.Divider />
-
-
                       <DropdownSubmenu href="#" title="Select Year">
                         <NavDropdown.Item onClick={() => handleYearSelect(2020)}>
                           2020

@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { Route, Routes } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 
@@ -34,21 +35,29 @@ function App() {
   };
 
   return (
+    
     <>
-      <OffcanvasNavbar onYearSelect={handleYearSelect}>
+     <OffcanvasNavbar onYearSelect={handleYearSelect}>
         <HandleSearchForTeam
           teamData={teamData}
           setSearchResults={setSearchResults}
         />
       </OffcanvasNavbar>
-
-      <DisplayTeams teamData={searchResults} />
+    <Routes>
+      <Route path="/standings" element={<ShowTeamStandings/>}></Route>
+      <Route path="/" element={<DisplayTeams teamData={searchResults} />} />
+    </Routes>
+      
 
       {/* Render the show Team Standings table when the year is selected from the dropdown menu. */}
-      <div className="standingsTable">
-        {selectedYear && <ShowTeamStandings year={selectedYear} />}
-      </div>
+      
+      {/* <div className="standingsTable">
+        {selectedYear && <ShowTeamStandings year={selectedYear} />} 
+        
+      </div> */}
+      
     </>
+    
   );
 }
 
